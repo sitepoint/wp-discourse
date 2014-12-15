@@ -395,7 +395,7 @@ class Discourse {
 
     // WP => Discourse category map
     $discourse_category_map = array(
-      '6523' => '26', // HTML/CSS
+      '6523' => '25', // HTML/CSS
       '407'  => '33', // JavaScript
       '37'   => '31', // PHP
       '8'    => '34', // Ruby
