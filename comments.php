@@ -1,5 +1,6 @@
 <?php
 $custom = get_post_custom();
+if (!array_key_exists('discourse_permalink', $custom)) return;
 $options = get_option('discourse');
 $permalink = (string)$custom['discourse_permalink'][0];
 $discourse_url_name = preg_replace( "(https?://)", "", $options['url'] );
