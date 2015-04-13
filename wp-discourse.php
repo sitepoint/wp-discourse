@@ -430,7 +430,8 @@ class Discourse {
       'raw' => $baked,
       'category' => $publish_category,
       'skip_validations' => 'true',
-      'auto_track' => ( $options['auto-track'] == "1" ? 'true' : 'false' )
+      'auto_track' => ( $options['auto-track'] == "1" ? 'true' : 'false' ),
+      'tags' => array('article')
     );
 
     if( ! $discourse_id > 0 ) {
@@ -453,32 +454,6 @@ class Discourse {
 
       if( property_exists( $json, 'id' ) ) {
         $discourse_id = (int) $json->id;
-      }
-
-      if ( property_exists( $json, 'topic_id' ) ) {
-        $topic_id = (int) $json->topic_id;
-
-        // add article tag
-        $url = $options['url'] . '/tagger/set_tags';
-
-        $data = array(
-          'api_key' => $options['api-key'],
-          'api_username' => $username,
-          'topic_id' => $topic_id,
-          'tags' => 'article'
-        );
-
-        $soptions = array(
-          'http' => array(
-            'ignore_errors' => true,
-            'method' => 'POST',
-            'content' => http_build_query( $data ),
-            'header' => "Content-Type: application/x-www-form-urlencoded\r\n"
-          )
-        );
-
-        $context = stream_context_create( $soptions );
-        $result = file_get_contents( $url, false, $context );
       }
 
       if( isset( $discourse_id ) && $discourse_id > 0 ) {
