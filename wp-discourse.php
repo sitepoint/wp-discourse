@@ -412,6 +412,7 @@ class Discourse {
       '5849' => '30', // WordPress
       '4386' => '47', // Web Foundations
       '422'  => '47', // Web
+      '7574' => '47', // Developer Center
     );
 
     // check for category mapping
